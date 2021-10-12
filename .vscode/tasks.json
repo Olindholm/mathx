@@ -1,0 +1,32 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "$(play) Run",
+            "type": "shell",
+            "command": "python3 ./src/main.py",
+            "args": [],
+            "presentation": {
+                "clear": true
+            }
+        },
+        {
+            "label": "$(debug-console) Debug",
+            "type": "shell",
+            "command": "${command:workbench.action.debug.start}",
+            "args": [],
+            "presentation": {
+                "clear": true
+            }
+        },
+        {
+            "label": "$(tasklist) Test",
+            "type": "shell",
+            "command": "pytest",
+            "args": [],
+            "presentation": {
+                "clear": true
+            }
+        }
+    ]
+}
