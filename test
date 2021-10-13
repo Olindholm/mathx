@@ -8,4 +8,4 @@ cd $(dirname "$BASH_SOURCE")
 set -e
 
 # Test
-pytest --junitxml=./tests/test_results.xml
+pytest --verbose -s --junitxml=./tests/test_results.xml $@
