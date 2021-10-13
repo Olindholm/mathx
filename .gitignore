@@ -1,2 +1,5 @@
 # Ignore python cached files
 __pycache__
+
+# pytest
+tests/*results.xml
