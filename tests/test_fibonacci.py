@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 import pytest
 
+#
 # Fibonacci Number Test
+#
 from mathx import fibonacci_number, fibonacci_number_solvers
 
 def test_fibonacci_number_invalid_solver():
@@ -15,7 +17,9 @@ def test_fibonacci_number_invalid_solver():
     with pytest.raises(ValueError):
         fibonacci_number(n, solver)
 
+#
 # Fibonacci Solver Tests
+#
 
 def fibonacci_number_solver_float_input(fib):
     n = 2.0
