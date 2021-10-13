@@ -22,7 +22,7 @@
         {
             "label": "$(tasklist) Test",
             "type": "shell",
-            "command": "pytest",
+            "command": "./test",
             "args": [],
             "presentation": {
                 "clear": true
