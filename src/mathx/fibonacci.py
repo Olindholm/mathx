@@ -22,6 +22,11 @@ def _fibonacci_number_recursive_solver(n):
 
 # Iterative
 def _fibonacci_number_iterative_solver(n):
+    # Ensure n is a integer
+    if (not isinstance(n, int)):
+        raise TypeError("n must be an integer!")
+
+    # If n is negative
     if (n < 0):
         return (-1 if (n % 2) == 0 else 1) * _fibonacci_number_iterative_solver(-n)
 
@@ -47,4 +52,7 @@ fibonacci_number_solvers = {
 # n must be an integer (whole number).
 #
 def fibonacci_number(n, solver="recursive_solver"):
+    if (solver not in fibonacci_number_solvers):
+        raise ValueError("Unsuported solver!")
+
     return fibonacci_number_solvers[solver](n)
