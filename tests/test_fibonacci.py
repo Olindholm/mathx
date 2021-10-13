@@ -8,16 +8,16 @@ def fibonacci_number_solver_float_input(fib):
         fib(n)
 
 # Generate test functions for every solver
-def hello(prefix, items, scope=globals()):
-    print(scope)
+def create_test_cases_for_items(prefix, items, scope=globals()):
 
     # Find all tests
     tests = [(name[len(prefix):], thing) for (name, thing) in scope.items() if callable(thing) and name.startswith(prefix)]
 
     for (item_name, item_func) in items:
         for (test_name, test_func) in tests:
-            func = lambda: test_func(item_func)
-            scope["test_fibonacci_number_" + item_name + "_" + test_name] = func
+            name = "test_" + prefix + item_name + "_" + test_name
+            func = lambda test=test_func, func=item_func: test(func)
+            scope[name] = func
 
 from mathx import fibonacci_number_solvers
-hello("fibonacci_number_solver_", fibonacci_number_solvers.items())
+create_test_cases_for_items("fibonacci_number_", fibonacci_number_solvers.items())
