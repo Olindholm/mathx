@@ -25,4 +25,11 @@ pipeline {
     }
 
   }
+
+  post {
+    always {
+      junit 'tests/*results.xml'
+    }
+  }
+
 }
