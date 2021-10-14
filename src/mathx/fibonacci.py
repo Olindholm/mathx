@@ -114,6 +114,33 @@ fibonacci_number_solvers = {
 # n must be an integer (whole number).
 #
 def fibonacci_number(n, solver="knuth_solver"):
+    """
+    Return the nth fibonacci number.
+
+    Parameters
+    ----------
+    n : int
+        The nth fibonacci number.
+        Negative integers are allows.
+        For more info see [Fibonacci number on wikipedia](https://en.wikipedia.org/wiki/Fibonacci_number).
+
+    solver : bool, default "knuth_solver"
+        The solver/algorithm to use to determine the fibonacci number.
+        Available values are found in `fibonacci_number_solvers`.
+
+    Returns
+    -------
+    fibonacci : int
+        The nth fibonacci_number.
+
+    Raises
+    ------
+    TypeError
+        If `n` is not an integer.
+    ValueError
+        If the `solver` does not exist.
+    """
+
     if (solver not in fibonacci_number_solvers):
         raise ValueError("Unsuported solver!")
 
