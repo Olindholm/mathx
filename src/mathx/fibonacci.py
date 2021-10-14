@@ -1,9 +1,4 @@
 #!/usr/bin/env python3
-from numbers import Integral
-
-def isinteger(n):
-    ""
-    return isinstance(n, int)
 
 # Recursive
 def _fibonacci_number_recursive_solver(n):
