@@ -1,0 +1,60 @@
+[project]
+name = "mathx"
+version = "0+dev"
+requires-python = ">=3.7"
+
+dependencies = [
+    "numpy",
+]
+
+
+[project.optional-dependencies]
+dev = [
+    "black",
+    "isort",
+    "pytest",
+    "mypy",
+    "flake8",
+    "flake8-pyproject",
+]
+
+
+[build-system]
+requires = [
+    "setuptools>=42",
+    "wheel",
+]
+build-backend = "setuptools.build_meta"
+
+
+[tool.black]
+line-length = 88
+
+
+[tool.isort]
+profile = "black"
+
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = ""
+pythonpath = [
+    "src",
+]
+
+
+[tool.mypy]
+disallow_untyped_defs = true
+
+[[tool.mypy.overrides]]
+ignore_missing_imports = true
+module = [
+    "matplotlib.*",
+]
+
+
+[tool.flake8]
+max-line-length = 88
+per-file-ignores = [
+    "__init__.py:F401",
+]

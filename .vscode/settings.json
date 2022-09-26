@@ -6,7 +6,9 @@
     // But until then...
     "files.exclude": {
         "**/__pycache__": true,
-        "**/.pytest_cache": true
+        "**/.pytest_cache": true,
+        "**/.mypy_cache": true,
+        "**/*.egg-info": true,
     },
 
     // Formatting
@@ -26,5 +28,17 @@
     // When opening a file, `editor.tabSize` and `editor.insertSpaces`
     // will be detected based on the file contents. Set to false to keep
     // the values you've explicitly set, above.
-    "editor.detectIndentation": false
+    "editor.detectIndentation": false,
+
+    // Ruler for black
+    "editor.rulers": [88],
+
+    // Python
+    "[python]": {
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true,
+        },
+    },
+    "python.formatting.provider": "black",
 }
