@@ -1,5 +1,6 @@
-# Ignore python cached files
+# Python
 __pycache__
-
-# pytest
-tests/*results.xml
+*.egg-info
+.pytest_cache
+.mypy_cache
+.tox

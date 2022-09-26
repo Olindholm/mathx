@@ -1,10 +1,11 @@
-
 import math
+from typing import List
 
 # Cache for fast lookup
-primes = []
+primes: List[int] = []
 
-def prime_number(n, clear_cache=False):
+
+def prime_number(n: int, clear_cache: bool = False) -> int:
     """
     Return the nth prime number.
 
@@ -36,11 +37,11 @@ def prime_number(n, clear_cache=False):
     """
 
     # Ensure n is a integer
-    if (not isinstance(n, int)):
+    if not isinstance(n, int):
         raise TypeError("n must be an integer!")
 
     # Ensure n is positive
-    if (n <= 0):
+    if n <= 0:
         raise ValueError("n must be a strictly positive!")
 
     i = primes[-1] if len(primes) > 0 else 1
@@ -52,20 +53,21 @@ def prime_number(n, clear_cache=False):
         isPrime = True
 
         for prime in primes:
-            if (prime > sqrtOfI): break
-            if (i % prime == 0):
+            if prime > sqrtOfI:
+                break
+            if i % prime == 0:
                 # If the remainder is 0, it is not a prime.
                 isPrime = False
                 break
 
-        if (isPrime):
+        if isPrime:
             primes.append(i)
 
     # Get prime number n
-    prime = primes[n-1]
+    prime = primes[n - 1]
 
     # Clear cache
-    if (clear_cache):
+    if clear_cache:
         primes.clear()
 
     # Return result
