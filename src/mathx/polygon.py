@@ -1,18 +1,19 @@
 from __future__ import annotations
 
-from typing import List, Tuple, Union
+from typing import Any, List, Tuple, Union, get_origin
 
 import numpy as np
 from numpy.linalg import norm
 
 Point = Tuple[float, float]
 PointList = List[Point]
+PointType: Any = get_origin(Point)
 
 
 def dist(p1: Point, p2: Point) -> float:
     a = np.array(p1)
     b = np.array(p2)
-    return norm(b - a)
+    return float(norm(b - a))
 
 
 class Line:
@@ -144,12 +145,12 @@ class Polygon:
             if self.contains(a):
                 points.append(a)
 
-            intersections = []
+            intersections: List[Point] = []
             for c, d in self.pairs():
                 cd = Line(c, d)
 
                 i = ab.intersection(cd)
-                if isinstance(i, Point.__origin__):
+                if isinstance(i, PointType):
                     intersections.append(i)
                 elif isinstance(i, Line):
                     intersections.append(i.p1)
@@ -159,7 +160,8 @@ class Polygon:
             points.extend(intersections)
 
         # Reduce to unique points
-        points = dict.fromkeys(points)
+        points = [*dict.fromkeys(points).keys()]
+        print(points)
         n = len(points)
 
         if n == 0:

@@ -2,12 +2,13 @@ from typing import Union
 
 import matplotlib.pyplot as plt
 import pytest
+from pytest import FixtureRequest
 
 from mathx.polygon import Line, Point, Polygon
 
 
 @pytest.fixture
-def verbose(request) -> int:
+def verbose(request: FixtureRequest) -> int:
     return request.config.getoption("verbose")
 
 
@@ -43,8 +44,8 @@ def plot_line_intersection(
 def plot_polygon_intersection(
     polygon1: Polygon,
     polygon2: Polygon,
-    intersection: Union[None, Line, Polygon],
-    exp: Union[None, Line, Polygon],
+    intersection: Union[None, Point, Line, Polygon],
+    exp: Union[None, Point, Line, Polygon],
 ) -> None:
     colors = ["r", "k", "g", "b"]
     hatches = ["x", "", "/", "\\"]
@@ -276,7 +277,7 @@ def test_polygon_contains(polygon: Polygon, point: Point, exp: bool) -> None:
 def test_polygon_intersection(
     polygon1: Polygon,
     polygon2: Polygon,
-    exp: Union[None, Line, Polygon],
+    exp: Union[None, Point, Line, Polygon],
     verbose: int,
 ) -> None:
     intersection = polygon1.intersection(polygon2)
